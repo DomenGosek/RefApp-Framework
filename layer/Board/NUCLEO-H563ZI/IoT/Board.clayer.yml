@@ -41,8 +41,9 @@ layer:
     - pack: Keil::STM32H5xx_DFP@1.1.0
     - pack: Keil::NUCLEO-H563ZI_BSP@1.0.0-dev0
     - pack: ARM::CMSIS@5.9.0
+    - pack: ARM::CMSIS-View@1.0.0
     - pack: ARM::CMSIS-Driver@2.7.2
-    - pack: Keil::ARM_Compiler@1.7.2
+    - pack: ARM::CMSIS-Compiler@1.0.0
 
   define:
     - CMSIS_board_header: \"NUCLEO-H563ZI.h\"
@@ -80,9 +81,10 @@ layer:
     - component: Keil::CMSIS Driver:Ethernet MAC
     - component: Keil::CMSIS Driver:Ethernet PHY:LAN8742A
 
-   # - component: ARM::CMSIS-Compiler:I/O:STDERR&User
-   # - component: ARM::CMSIS-Compiler:I/O:STDOUT&User
-   # - component: ARM::CMSIS-Compiler:I/O:STDIN&User
+    - component: ARM::CMSIS-View:Event Recorder&DAP
+    - component: ARM::CMSIS-Compiler:I/O:STDERR&User
+    - component: ARM::CMSIS-Compiler:I/O:STDOUT&User
+    - component: ARM::CMSIS-Compiler:I/O:STDIN&User
 
   groups:
     - group: GPIO Interface
@@ -93,14 +95,5 @@ layer:
     - group: Board
       files:
         - file: ./NUCLEO-H563ZI.h
-        - file: ../../../../interface/clib/arm/retarget_io.c
-          define:
-            - RTE_Compiler_IO_STDIN
-            - RTE_Compiler_IO_STDIN_User
-            - RTE_Compiler_IO_STDOUT
-            - RTE_Compiler_IO_STDOUT_User
-            - RTE_Compiler_IO_STDERR
-            - RTE_Compiler_IO_STDERR_User
-          for-compiler: AC6
         - file: ./retarget_stdio.c
 
