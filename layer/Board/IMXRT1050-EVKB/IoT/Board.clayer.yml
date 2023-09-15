@@ -34,10 +34,10 @@ layer:
         - Heap: 65536
 
   packs:
-    - pack: NXP::MIMXRT1052_DFP@15.1.0
-    - pack: NXP::EVKB-IMXRT1050_BSP@15.1.0
-    - pack: Keil::IMXRT1050-EVKB_BSP@1.1.1
-    - pack: Keil::iMXRT105x_MWP@1.5.1
+    - pack: NXP::MIMXRT1052_DFP@17.0.0
+    - pack: NXP::EVKB-IMXRT1050_BSP@17.0.0
+    - pack: Keil::IMXRT1050-EVKB_BSP@1.2.0-dev0
+    - pack: Keil::iMXRT105x_MWP@1.6.0-dev1
     - pack: ARM::CMSIS@5.9.0
     - pack: ARM::CMSIS-Driver@2.7.2
     - pack: ARM::CMSIS-View@1.0.0
@@ -46,7 +46,6 @@ layer:
   define:
     - CMSIS_board_header: "\"IMXRT1050_EVKB.h\""
     - CODEC_WM8960_ENABLE
-    - FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL: 1
     - SKIP_SYSCLK_INIT
     - XIP_BOOT_HEADER_DCD_ENABLE: 1
     - XIP_BOOT_HEADER_ENABLE: 1
@@ -118,6 +117,8 @@ layer:
     - component: ARM::CMSIS-Compiler:I/O:STDOUT&User
     - component: ARM::CMSIS-Compiler:I/O:STDIN&User
 
+  linker:
+    - script: ./RTE/Device/MIMXRT1052DVL6B/MIMXRT1052xxxxx_flexspi_nor_sdram.scf
   groups:
     - group: GPIO Interface
       files:
@@ -130,7 +131,6 @@ layer:
         - file: ./main.h
         - file: ./main.c
         - file: ./retarget_stdio.c
-        - file: ./RTE/Device/MIMXRT1052DVL6B/MIMXRT1052xxxxx_flexspi_nor_sdram.scf
     - group: Driver
       files:
         - file: ../../../../interface/audio/include/audio_drv.h
