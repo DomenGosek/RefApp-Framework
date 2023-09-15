@@ -92,13 +92,10 @@ layer:
 
     - component: NXP::Device:SDK Utilities:assert
     - component: NXP::Device:SDK Utilities:debug_console
-      define:
-        - SDK_DEBUGCONSOLE: 1
-        - __MCUXPRESSO
     - component: NXP::Device:SDK Utilities:serial_manager
     - component: NXP::Device:SDK Utilities:serial_manager_uart
 
-    - component: NXP::Board Support:SDK Drivers:evkbimxrt1050
+    - component: NXP::Board Support:SDK Drivers:evkbimxrt1050 xip
     - component: NXP::Board Support:SDK Project Template:project_template&evkbimxrt1050
 
     - component: ARM::CMSIS:CORE
