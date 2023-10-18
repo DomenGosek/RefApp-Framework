@@ -9,7 +9,9 @@ layer:
         - CMSIS-RTOS2
 
   packs:
-    - pack: ARM::CMSIS@5.9.0
+    - pack: ARM::CMSIS@>=6.0.0
+    - pack: ARM::CMSIS-RTX@1.0.0
 
   components:
     - component: ARM::CMSIS:RTOS2:Keil RTX5&Source
+    - component: ARM::CMSIS:OS Tick
